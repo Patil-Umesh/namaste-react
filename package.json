@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Namaste-react by Umesh Patil",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "repository": {
     "type": "git",
@@ -17,7 +19,9 @@
   "homepage": "https://github.com/Patil-Umesh/namaste-react#readme",
   "devDependencies": {
     "parcel": "^2.11.0",
-    "process": "^0.11.10"
+    "postcss": "^8.4.35",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.4.1"
   },
   "dependencies": {
     "react": "^18.2.0",
