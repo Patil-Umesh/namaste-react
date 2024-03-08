@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [restList, setRestList] = useState([]);
@@ -13,26 +14,32 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.02760&lng=72.58710&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-
-    const json = await data.json();
-    console.log(json);
-    setRestList(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredList(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+    try {
+      const data = await fetch(
+        "https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.02760&lng=72.58710&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      );
+      const json = await data.json();
+      setRestList(
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+      setFilteredList(
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const filterMostRated = () => {
     const filteredList = restList.filter((rest) => rest.info.avgRating > 4.2);
-    setFilteredList(filteredList);
     filterName === "Most Rated"
       ? setFilterName("Clear Filter")
       : setFilterName("Most Rated");
+    filterName === "Clear Filter"
+      ? setFilteredList(restList)
+      : setFilteredList(filteredList);
   };
   return restList.length === 0 ? (
     <Shimmer />
@@ -71,7 +78,12 @@ const Body = () => {
       </div>
       <div className="rest-container">
         {filteredList.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} restData={restaurant} />
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+          >
+            <RestaurantCard restData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
