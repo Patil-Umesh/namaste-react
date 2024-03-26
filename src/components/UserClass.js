@@ -4,39 +4,36 @@ class UserClass extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 1,
+      userInfo: {
+        name: "temp",
+        login: "test",
+        location: "default",
+      },
     };
-    console.log(this.props.name + "Child constructor");
+    // console.log(this.props.name + "Child constructor");
   }
-  componentDidMount() {
-    console.log(this.props.name + "Child component DidMount");
-    // this.timer = setInterval(() => {
-    //   console.log("Hii... Calling from child componentDidMount");
-    // }, 1000);
+  async componentDidMount() {
+    const data = await fetch("https://api.github.com/users/Patil-Umesh");
+    const json = await data.json();
+    console.log(json);
+    this.setState({
+      userInfo: json,
+    });
+    console.log("Componet didMount");
   }
-
-  componentWillUnmount() {
-    // clearInterval(this.timer);
-    console.log(" Child componentWillUnmount");
+  componentDidUpdate() {
+    console.log("componet didUpdate");
   }
   render() {
-    console.log(this.props.name + "Child render");
-    const { name, username, location } = this.props;
+    // console.log(this.props.name + "Child render");
+    const { name, login, location, avatar_url, bio } = this.state.userInfo;
     return (
-      <div className="user-card">
-        <h3>Count: {this.state.count} </h3>
-        <button
-          onClick={() => {
-            this.setState({
-              count: this.state.count + 1,
-            });
-          }}
-        >
-          Increase Counter
-        </button>
+      <div className="user-card mt-32 pl-[35rem] pr-[35rem]">
+        <img alt="avatar" src={avatar_url} />
         <h3>Name: {name} </h3>
-        <h3>Username: {username} </h3>
-        <h3>Location: {location} </h3>
+        <h4>Bio:{bio} </h4>
+        <h4>Login: {login} </h4>
+        <h4>Location: {location} </h4>
       </div>
     );
   }
