@@ -2,9 +2,18 @@ import React from "react";
 import vegicon from "../../src/Vegetarian.png";
 import Star from "../Star";
 import { CDN_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 const ItemList = ({ items }) => {
-  console.log(items);
+  const dispatch = useDispatch();
+  // console.log(items);
+
+  const handleAddItem = () => {
+    //Dispatch an Action:
+    dispatch(addItem("Pizza"));
+  };
+
   return (
     <div>
       {items.map((item) => (
@@ -60,15 +69,20 @@ const ItemList = ({ items }) => {
             </div>
             <div>
               <div className="absolute">
-                <button className="rounded-md shadow-lg w-24 px-2 py-1 bg-white text-green-500 mt-[5rem] ml-2">
+                <button
+                  onClick={handleAddItem}
+                  className="rounded-md shadow-lg w-24 px-2 py-1 bg-white text-green-500 mt-[5rem] ml-2"
+                >
                   ADD
                 </button>
               </div>
-              <img
-                alt="Item Image"
-                className="w-[7rem] h-[6rem] rounded-lg"
-                src={CDN_URL + item?.card?.info?.imageId}
-              />
+              {item?.card?.info?.imageId && (
+                <img
+                  alt="Item Image"
+                  className="w-[7rem] h-[6rem] rounded-lg"
+                  src={CDN_URL + item?.card?.info?.imageId}
+                />
+              )}
             </div>
           </div>
           <div className="line-break border border-dashed border-gray-300 my-8" />

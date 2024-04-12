@@ -14,6 +14,8 @@ import RestaurantCategory from "./RestaurantCategory";
 const RestaurantMenu = () => {
   const { resID } = useParams();
   const resMenu = useRestaurantMenu(resID);
+  const [showItems, setShowItems] = useState(0);
+  const [collapseBtn, setCollapseBtn] = useState("➕");
   // console.log(resMenu);
 
   if (resMenu === null) return <Shimmer />;
@@ -78,7 +80,7 @@ const RestaurantMenu = () => {
             src={CDN_URL + feeDetails?.icon}
           />
           <p className="sla-time text-gray-500 text-[0.85rem]">
-            {feeDetails?.message}{" "}
+            {feeDetails?.message.replace("<b>", "").replace("</b>", "")}
           </p>
         </div>
       ) : (
@@ -145,10 +147,18 @@ const RestaurantMenu = () => {
       </div>
       <div className="line-break border-[4px] border-gray-100 mx-[400px]" />
       <div className="category-items mx-[400px] mt-5">
-        {categories?.map((category) => (
+        {categories?.map((category, index) => (
           <RestaurantCategory
             key={category?.card?.card?.title}
             data={category?.card?.card}
+            showItems={index === showItems ? true : false}
+            setShowItems={() => setShowItems(index)}
+            collapseBtn={collapseBtn}
+            setCollapseBtn={() => {
+              showItems && collapseBtn === "➕"
+                ? setCollapseBtn("➖")
+                : setCollapseBtn("➕");
+            }}
           />
         ))}
       </div>

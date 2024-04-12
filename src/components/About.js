@@ -10,7 +10,7 @@ class About extends React.Component {
   async componentDidMount() {
     const data = await fetch("https://api.github.com/users/Patil-Umesh");
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
     // console.log("Parent ComponentDidMount function");
   }
   componentWillUnmount() {

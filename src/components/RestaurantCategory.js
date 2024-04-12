@@ -1,13 +1,17 @@
 import { useState } from "react";
 import ItemList from "./ItemList";
 
-const RestaurantCategory = ({ data }) => {
-  const [showItems, setShowItems] = useState(false);
-  const [collapseBtn, setCollapseBtn] = useState("➕");
+const RestaurantCategory = ({
+  data,
+  showItems,
+  setShowItems,
+  collapseBtn,
+  setCollapseBtn,
+}) => {
   // console.log(data);
   const hideItemList = () => {
-    setShowItems(!showItems);
-    collapseBtn === "➕" ? setCollapseBtn("➖") : setCollapseBtn("➕");
+    setShowItems();
+    setCollapseBtn();
   };
   return (
     <>
