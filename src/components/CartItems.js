@@ -3,28 +3,29 @@ import vegicon from "../../src/Vegetarian.png";
 import Star from "../Star";
 import { CDN_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
-import { addItem } from "../utils/cartSlice";
+import { removeItem } from "../utils/cartSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const ItemList = ({ items }) => {
-  const notify = (itemName) => toast(itemName + " is added to the cart!");
-
+const CartItems = ({ items }) => {
+  const notify = () => toast("Item is removed from the cart!");
   const dispatch = useDispatch();
-  // console.log(items);
 
-  const handleAddItem = (item) => {
-    const { name } = item?.card?.info ?? {};
-    console.log(name);
-    //Dispatch an Action:
-    dispatch(addItem(item));
-    notify(name);
+  console.log(items);
+
+  const handleRemoveItem = (index) => {
+    //logic to remove item:
+    dispatch(removeItem(index));
+    notify();
   };
 
   return (
-    <div>
-      {items.map((item) => (
-        <div key={item?.card?.info?.id}>
+    <>
+      {items.map((item, index) => (
+        <div
+          className="bg-gray-50 shadow-lg p-4 my-6 mx-[400px] text-left"
+          key={item?.card?.info?.id}
+        >
           {item?.card?.info?.isVeg ? (
             <div className="flex px-2">
               <img
@@ -77,10 +78,10 @@ const ItemList = ({ items }) => {
             <div>
               <div className="absolute">
                 <button
-                  onClick={() => handleAddItem(item)}
+                  onClick={() => handleRemoveItem(index)}
                   className="rounded-md shadow-lg w-24 px-2 py-1 bg-white text-green-500 mt-[5rem] ml-2"
                 >
-                  ADD
+                  Remove
                 </button>
                 <ToastContainer autoClose={2000} />
               </div>
@@ -96,7 +97,7 @@ const ItemList = ({ items }) => {
           <div className="line-break border border-dashed border-gray-300 my-8" />
         </div>
       ))}
-    </div>
+    </>
   );
 };
-export default ItemList;
+export default CartItems;

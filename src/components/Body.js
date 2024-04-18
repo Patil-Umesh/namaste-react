@@ -35,7 +35,7 @@ const Body = () => {
   };
 
   const filterMostRated = () => {
-    const filteredList = restList.filter((rest) => rest.info.avgRating > 4.2);
+    const filteredList = restList.filter((rest) => rest.info.avgRating >= 4.3);
     filterName === "Top Rated"
       ? setFilterName("Clear Filter")
       : setFilterName("Top Rated");
@@ -55,56 +55,58 @@ const Body = () => {
   }
 
   return (
-    <div className="body bg-slate-600">
-      <div className="filter mb-5">
-        <div className="search-bar flex pl-24">
-          <div className="search-input pl-96">
-            <input
-              type="text"
-              className="w-72 mt-32 p-4 ps-5 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Search for restaurants and food"
-              value={searchText}
-              onChange={(e) => {
-                setSearchText(e.target.value);
+    <>
+      <div className="body bg-slate-600 pb-32">
+        <div className="filter mb-16">
+          <div className="search-bar flex pl-24">
+            <div className="search-input pl-96">
+              <input
+                type="text"
+                className="w-72 mt-32 p-4 ps-5 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Search for restaurants and food"
+                value={searchText}
+                onChange={(e) => {
+                  setSearchText(e.target.value);
+                }}
+              ></input>
+            </div>
+            <button
+              className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-2 focus:ring-purple-300 font-medium rounded-lg text-sm ml-10 mt-32 px-3 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+              onClick={() => {
+                const filteredList = restList.filter((rest) =>
+                  rest?.info?.name
+                    .toLowerCase()
+                    .includes(searchText.toLowerCase())
+                );
+                setFilteredList(filteredList);
               }}
-            ></input>
+            >
+              Search
+            </button>
+            <button
+              className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-2 focus:ring-purple-300 font-medium rounded-lg text-sm mx-5 mt-32 px-3 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+              onClick={filterMostRated}
+            >
+              {filterName}
+            </button>
           </div>
-          <button
-            className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-2 focus:ring-purple-300 font-medium rounded-lg text-sm ml-10 mt-32 px-3 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-            onClick={() => {
-              const filteredList = restList.filter((rest) =>
-                rest?.info?.name
-                  .toLowerCase()
-                  .includes(searchText.toLowerCase())
-              );
-              setFilteredList(filteredList);
-            }}
-          >
-            Search
-          </button>
-          <button
-            className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-2 focus:ring-purple-300 font-medium rounded-lg text-sm mx-5 mt-32 px-3 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-            onClick={filterMostRated}
-          >
-            {filterName}
-          </button>
+        </div>
+        <div className="rest-container flex flex-wrap mr-[330px] ml-[334px]">
+          {filteredList.map((restaurant) => (
+            <Link
+              key={restaurant.info.id}
+              to={"/restaurants/" + restaurant.info.id}
+            >
+              {restaurant.info.aggregatedDiscountInfoV3 ? (
+                <DiscountCard restData={restaurant} />
+              ) : (
+                <RestaurantCard restData={restaurant} />
+              )}
+            </Link>
+          ))}
         </div>
       </div>
-      <div className="rest-container flex flex-wrap pl-[12rem] pr-[11rem]">
-        {filteredList.map((restaurant) => (
-          <Link
-            key={restaurant.info.id}
-            to={"/restaurants/" + restaurant.info.id}
-          >
-            {restaurant.info.aggregatedDiscountInfoV3 ? (
-              <DiscountCard restData={restaurant} />
-            ) : (
-              <RestaurantCard restData={restaurant} />
-            )}
-          </Link>
-        ))}
-      </div>
-    </div>
+    </>
   );
 };
 export default Body;
