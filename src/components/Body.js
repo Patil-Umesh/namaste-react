@@ -46,7 +46,7 @@ const Body = () => {
   const onlineStatus = useOnlineStatus();
   if (onlineStatus === false)
     return (
-      <h2 className="offline-status pt-[150px] ml-[500px] text-gray-600 text-xl font-semibold">
+      <h2 className="offline-status pt-[150px] pb-[150px] ml-[500px] text-gray-600 text-xl font-semibold">
         You are offline. Please check your internet connection...
       </h2>
     );

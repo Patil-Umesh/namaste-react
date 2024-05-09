@@ -41,7 +41,9 @@ const Contact = () => {
   };
   return (
     <div className="text-center pt-[120px] pb-[120px] ">
-      <h1 className="font-bold text-gray-700 text-2xl">CONTACT US</h1>
+      <h1 className="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+        CONTACT US
+      </h1>
       <div className=" bg-pink-100 mx-[500px] text-left rounded-2xl px-10">
         <p className="font-semibold text-lg text-gray-600 m-2 p-2 text-center">
           Tell us more and we will find best solution for you!

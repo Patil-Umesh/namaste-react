@@ -19,7 +19,9 @@ const Cart = () => {
   return (
     <>
       <div className="text-center pt-[160px] pb-20">
-        <h3 className="font-bold text-gray-800 text-2xl">FOOD CART</h3>
+        <h3 className="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+          FOOD CART
+        </h3>
         {cartItems.length === 0 ? (
           <div className="empty-cart">
             <div className="justify-center content-center my-7 ">

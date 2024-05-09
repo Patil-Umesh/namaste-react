@@ -14,14 +14,17 @@ const RestaurantCard = (props) => {
   const { deliveryTime } = restData?.info?.sla ?? {};
 
   return (
-    <div className="rest-card p-1 m-3 w-[261px] h-[320px] bg-pink-100 shadow-md rounded-lg hover:-translate-y-1">
+    <div className="rest-card p-1 m-3 w-[261px] h-[320px] bg-pink-200 shadow-md rounded-lg">
       <img
         className="rest-card-img1 w-[253px] h-[169px] rounded-lg"
         alt="Image not found!!"
         src={CDN_URL + cloudinaryImageId}
       />
       <div className="items-center">
-        <h3 className="rest-name font-bold text-black pl-2">{name} </h3>
+        <h3 className="rest-name font-bold  pl-2 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+          {name}{" "}
+        </h3>
+
         <div className="flex pl-2 font-bold">
           <h4 className="items-center content-center mt-[0.35rem] mr-[0.35rem]">
             <Star />
@@ -42,7 +45,7 @@ export const DiscountLable = (RestaurantCard) => {
     const { aggregatedDiscountInfoV3 } = restData?.info ?? {};
     return (
       <>
-        <label className="text-white font-bold text-xl absolute pl-7 mt-[150px]">
+        <label className="text-white font-bold text-xl absolute pl-7 mt-[150px] bg-gradient-to-r from-black">
           {aggregatedDiscountInfoV3.header
             ? aggregatedDiscountInfoV3.header
             : " "}{" "}

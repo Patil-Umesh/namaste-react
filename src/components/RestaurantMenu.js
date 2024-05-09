@@ -47,7 +47,7 @@ const RestaurantMenu = () => {
     <>
       <div className="restaurant-menu-main flex justify-between mx-[400px] pt-[150px]">
         <div className="restaurant-menu">
-          <h3 className="rest-menu-name text-xl text-gray-700 font-semibold py-2">
+          <h3 className="rest-menu-name text-xl font-semibold py-2 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
             {name}
           </h3>
           <p className="rest-menu-cuisines text-gray-500 text-[0.85rem]">

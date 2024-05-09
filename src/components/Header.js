@@ -30,18 +30,15 @@ const Header = () => {
         </Link>
       </div>
       <div className="flex items-center">
-        <ul className="flex p-1 m-1 items-center content-center text-center">
-          <li className="px-4">Online:{onlineStatus ? "✅" : "❌"} </li>
-          <li className="px-4">
+        <ul className="flex p-1 m-1 items-center content-center text-center bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+          <li className="px-4">Online:{onlineStatus ? "✔" : "❌"} </li>
+          <li className="px-4 hover:underline underline-offset-2 decoration-pink-500">
             <Link to="/"> Home</Link>
           </li>
-          <li className="px-4">
+          <li className="px-4 hover:underline underline-offset-2 decoration-pink-500">
             <Link to="contact">Contact Us</Link>
           </li>
-          {/* <li className="px-4">
-            <Link to="grocery">Grocery</Link>
-          </li> */}
-          <li className="px-4">
+          <li className="px-4 hover:underline underline-offset-2 decoration-pink-500">
             <Link to="about">About Us</Link>
           </li>
           <li className="px-4 font-bold">

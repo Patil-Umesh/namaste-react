@@ -20,18 +20,32 @@ const Footer = () => {
           <h2 className="font-bold">TALK WITH US</h2>
           <div className="border border-gray-400 mb-4"></div>
           <div>Call: +91 - 9876543210</div>
-          <div className="cursor-pointer">Support: support@tastyeats.com </div>
-          <div className="cursor-pointer">For Queries: team@tastyeats.com </div>
+          <div className="cursor-pointer hover:underline underline-offset-2 decoration-gray-800">
+            Support: support@tastyeats.com{" "}
+          </div>
+          <div className="cursor-pointer hover:underline underline-offset-2 decoration-gray-800">
+            For Queries: team@tastyeats.com{" "}
+          </div>
         </div>
         <div className="w-[250px]">
           <h2 className="font-bold">SERVICES</h2>
           <div className="border border-gray-400 mb-4"></div>
           <ul>
-            <li>Chinese Banquet Service</li>
-            <li>Buffet Service</li>
-            <li>Catering Service</li>
-            <li>Bulk Orders</li>
-            <li>Home Delivery</li>
+            <li className="cursor-pointer hover:underline underline-offset-2 decoration-gray-800">
+              Chinese Banquet Service
+            </li>
+            <li className="cursor-pointer hover:underline underline-offset-2 decoration-gray-800">
+              Buffet Service
+            </li>
+            <li className="cursor-pointer hover:underline underline-offset-2 decoration-gray-800">
+              Catering Service
+            </li>
+            <li className="cursor-pointer hover:underline underline-offset-2 decoration-gray-800">
+              Bulk Orders
+            </li>
+            <li className="cursor-pointer hover:underline underline-offset-2 decoration-gray-800">
+              Home Delivery
+            </li>
           </ul>
         </div>
         <div className="w-[250px]">
@@ -44,7 +58,9 @@ const Footer = () => {
                 alt="Facebook"
                 src={facebook}
               />
-              <p className="px-4 py-1 cursor-pointer">Facebook</p>
+              <p className="px-4 py-1 cursor-pointer hover:underline underline-offset-2 decoration-gray-800">
+                Facebook
+              </p>
             </div>
           </a>
           <a href="https://www.instagram.com/" target="_blank">
@@ -54,7 +70,9 @@ const Footer = () => {
                 alt="Instagram"
                 src={insta}
               />
-              <p className=" px-4 py-1 cursor-pointer">Instagram</p>
+              <p className=" px-4 py-1 cursor-pointer hover:underline underline-offset-2 decoration-gray-800">
+                Instagram
+              </p>
             </div>
           </a>
           <a href="https://twitter.com/?lang=en" target="_blank">
@@ -64,14 +82,22 @@ const Footer = () => {
                 alt="Twitter"
                 src={twitter}
               />
-              <p className=" px-4 py-1 cursor-pointer">Twitter</p>
+              <p className=" px-4 py-1 cursor-pointer hover:underline underline-offset-2 decoration-gray-800">
+                Twitter
+              </p>
             </div>
           </a>
         </div>
       </div>
-      <div className="bg-black text-white w-full h-12 py-2 text-center">
+      <div className="bg-black w-full h-12 py-2 text-center bg-gradient-to-r from-pink-500 to-violet-500">
         ©2024, Made with ❤ in India By{" "}
-        <a href="https://www.linkedin.com/in/umesh-patil2504/">Umesh Patil</a>
+        <a
+          className="hover:underline underline-offset-2 decoration-gray-800"
+          href="https://www.linkedin.com/in/umesh-patil2504/"
+          target="_blank"
+        >
+          Umesh Patil
+        </a>
       </div>
     </>
   );

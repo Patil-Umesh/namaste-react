@@ -50,7 +50,10 @@ const ItemList = ({ items }) => {
           )}
           <div className="flex py-3">
             <div className="w-10/12 py-1 px-2">
-              <div className="font-semibold"> {item?.card?.info?.name} </div>
+              <div className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+                {" "}
+                {item?.card?.info?.name}{" "}
+              </div>
               <div className="font-semibold">
                 {item?.card?.info?.defaultPrice &&
                 item?.card?.info?.finalPrice ? (

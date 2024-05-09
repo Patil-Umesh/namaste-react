@@ -5,9 +5,9 @@ const Profile = () => {
   const { user } = useAuth0();
   return (
     <>
-      <div className="container border rounded-lg bg-black text-white">
+      <div className=" rounded-lg bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500">
         <p className="userInfo text-center" id="userInfo1">
-          {"👽 " + user.name}
+          {"👤 " + user.name}
         </p>
         {/* <p className="userInfo" id="userInfo2">
           Family Name: {user.family_name}
