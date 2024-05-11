@@ -19,6 +19,11 @@ const AboutUs = () => {
           alt="Food-Banner-Image"
           src={foodBanner}
         />
+        <div className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+          DISCLAIMER:No copyright infringement intended. All images used in this
+          website belong to the rightful owners. This is for learning purposes
+          only.
+        </div>
       </div>
     </>
   );

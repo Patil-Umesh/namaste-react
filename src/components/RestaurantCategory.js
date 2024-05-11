@@ -15,7 +15,7 @@ const RestaurantCategory = ({
   };
   return (
     <>
-      <div className=" bg-gray-50 shadow-lg p-4 my-6">
+      <div className=" bg-gray-50 shadow-lg p-4 my-6 rounded-lg">
         <div
           className="flex justify-between cursor-pointer"
           onClick={hideItemList}

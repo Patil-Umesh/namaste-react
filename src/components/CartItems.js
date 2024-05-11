@@ -17,7 +17,7 @@ const CartItems = ({ items }) => {
     <>
       {items.map((item, index) => (
         <div
-          className="bg-gray-50 shadow-lg p-4 my-6 mx-[400px] text-left"
+          className="bg-gray-50 shadow-lg p-4 my-6 mx-[400px] text-left rounded-lg"
           key={item?.card?.info?.id}
         >
           {item?.card?.info?.isVeg ? (
@@ -52,15 +52,15 @@ const CartItems = ({ items }) => {
               <div className="font-semibold">
                 {item?.card?.info?.defaultPrice &&
                 item?.card?.info?.finalPrice ? (
-                  <h2 className="font-semibold text-gray-800 mr-2">
+                  <h2 className="price font-semibold text-gray-800 mr-2">
                     {"₹" + item?.card?.info?.finalPrice / 100}{" "}
                   </h2>
                 ) : "" || item?.card?.info?.price ? (
-                  <h2 className="font-semibold text-gray-800 mr-2">
+                  <h2 className="price font-semibold text-gray-800 mr-2">
                     {"₹" + item?.card?.info?.price / 100}{" "}
                   </h2>
                 ) : "" || item?.card?.info?.defaultPrice ? (
-                  <h2 className="font-semibold text-gray-800 mr-2">
+                  <h2 className="price font-semibold text-gray-800 mr-2">
                     {"₹" + item?.card?.info?.defaultPrice / 100}{" "}
                   </h2>
                 ) : (

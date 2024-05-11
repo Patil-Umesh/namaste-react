@@ -35,7 +35,7 @@ const Body = () => {
   };
 
   const filterMostRated = () => {
-    const filteredList = restList.filter((rest) => rest.info.avgRating >= 4.3);
+    const filteredList = restList.filter((rest) => rest.info?.avgRating >= 4.3);
     filterName === "Top Rated"
       ? setFilterName("Clear Filter")
       : setFilterName("Top Rated");
